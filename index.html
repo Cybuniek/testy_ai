@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <style>
+    :root { color-scheme: dark; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #000; /* neutral backdrop until widget mounts */
+    }
+    /* Make the widget the only, full-viewport element */
+    elevenlabs-convai {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      display: block;
+    }
+    /* Floating back control that doesn't affect layout */
+    .home-link {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      z-index: 2147483647;
+      color: #e7e9ff;
+      text-decoration: none;
+      background: rgba(20,20,26,.55);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 8px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      line-height: 0;
+    }
+    .home-link svg { width: 18px; height: 18px; }
+    .home-link:focus-visible { outline: 2px solid #9aa5ff; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <elevenlabs-convai agent-id="agent_2501k7qhxyzgenv8knftxnnc272g"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
