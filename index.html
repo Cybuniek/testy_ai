@@ -36,6 +36,171 @@
   </style>
 </head>
 <body>
-  <elevenlabs-convai agent-id="agent_2501k7qhxyzgenv8knftxnnc272g"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  <header>
+    <div class="wrap nav">
+      <a href="#" class="logo" aria-label="USTNIK_2.0">
+        <span class="mark">USTNIK</span><span>_2.0</span>
+      </a>
+      <nav aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="#hero" aria-current="page">Home</a></li>
+          <li><a href="#about">O Projekcie</a></li>
+          <li><a href="#scene">Scena</a></li>
+          <li><a href="#archive">Archiwum</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#scene">Enter Show</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="glitch-bg" aria-hidden="true"></div>
+      <div class="hero-inner wrap">
+        <span class="tag">live · ai · alt</span>
+        <h1 class="title" id="hero-title">
+          <span class="glitch" data-text="USTNIK_2.0">USTNIK_2.0</span>
+        </h1>
+        <p class="lead" id="quote">„Prawda jest jak mikrofon — kto pierwszy chwyci, ten nadaje ton.”</p>
+        <div class="hero-actions">
+          <a class="btn" href="#scene">Wejdź do studia 🎙️</a>
+          <a class="btn" href="#about">O Projekcie</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="wrap" aria-labelledby="about-title">
+      <h2 id="about-title">O Projekcie</h2>
+      <p class="note">Hybryda performance’u, AI i kultury alternatywnej. Kontynuacja ducha oryginalnego <strong>Ustnik Show</strong> z integracją agentów (Neura, Paweł AI, inni).</p>
+      <div class="grid" style="margin-top:14px;">
+        <article class="card">
+          <h3>Manifest</h3>
+          <p>Scena jest laboratorium. Publiczność współtworzy narrację. AI jest medium, nie fetyszem.</p>
+        </article>
+        <article class="card">
+          <h3>Integracje</h3>
+          <p>Hooki pod logi dialogów, transkrypcje, embedy YT/SoundCloud. Przygotowane ID kotwic pod przyszłe mikroserwisy.</p>
+        </article>
+        <article class="card">
+          <h3>Dziedzictwo</h3>
+          <p>Archiwum poprzednich iteracji i materiałów. Filtry po tagach i typach.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="scene" class="wrap" aria-labelledby="scene-title">
+      <h2 id="scene-title">Scena</h2>
+      <p class="note">Kafle live: występy, dialogi AI, transkrypty/logi show.</p>
+      <div class="grid" style="margin-top:14px;">
+        <article class="card">
+          <h3>Występy</h3>
+          <p>Embed audio/wideo. <span class="chip">yt</span> <span class="chip">audio</span></p>
+        </article>
+        <article class="card">
+          <h3>Dialogi (AI)</h3>
+          <p>Interakcje i wycinki rozmów z agentami. <span class="chip">neura</span> <span class="chip">paweł</span></p>
+        </article>
+        <article class="card">
+          <h3>Transkrypty / Logi</h3>
+          <p>Porządkowane wg daty i scen. <span class="chip">txt</span> <span class="chip">md</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="archive" class="wrap" aria-labelledby="archive-title">
+      <h2 id="archive-title">Archiwum</h2>
+      <p class="note">Filtruj po tagach i typach. Prosty layout terminalowy poniżej.</p>
+      <div class="card" style="margin-top:14px;">
+        <form id="archive-form" aria-label="Wyszukiwarka archiwum">
+          <label for="q" class="term-line">&gt; search <input id="q" name="q" class="term-input" placeholder="show_1 OR audio OR grafika" /></label>
+        </form>
+        <div id="results" style="margin-top:10px;">
+          <div class="term-line">No results yet.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap" aria-labelledby="contact-title">
+      <h2 id="contact-title">Kontakt</h2>
+      <p class="note">Wyślij wiadomość do zespołu lub AI-postaci.</p>
+      <form id="contact-form" class="grid" style="margin-top:14px;">
+        <input class="term-input" name="name" placeholder="Imię / alias" required />
+        <input class="term-input" name="email" placeholder="Email" type="email" required />
+        <textarea class="term-input" name="msg" placeholder="Wiadomość" rows="4" required></textarea>
+        <button class="btn" type="submit">Wyślij</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="padding:16px 0 28px;">
+      <div class="term-line">© 2025 USTNIK_2.0 / ANH-RAVE Collective · <a href="#" aria-label="Licencja">Licencja</a></div>
+      <div class="terminal" aria-label="Mini-terminal">
+        <div class="term-line">&gt; Wpisz: <strong>help</strong><span class="caret" aria-hidden="true"></span></div>
+        <input id="term" class="term-input" placeholder="help | enter | scene | archive | contact" />
+        <div id="term-out" class="term-line" style="margin-top:8px; opacity:.9;">ready.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Quotes rotator ----
+    const quotes = [
+      '„Prawda jest jak mikrofon — kto pierwszy chwyci, ten nadaje ton.”',
+      '„Scena to laboratorium. Błędy są danymi.”',
+      '„AI to medium, nie fetysz.”',
+      '„Nie ma publiczności biernej, są tylko niezaadresowane role.”'
+    ];
+    const qEl = document.getElementById('quote');
+    if (qEl) { qEl.textContent = quotes[Math.floor(Math.random()*quotes.length)]; }
+
+    // ---- Archive mock search ----
+    const form = document.getElementById('archive-form');
+    const qInput = document.getElementById('q');
+    const res = document.getElementById('results');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = (qInput?.value || '').trim();
+      if (!q) { res.innerHTML = '<div class="term-line">Try: <code>audio</code>, <code>show_1</code>, <code>grafika</code></div>'; return; }
+      // Placeholder: replace with real fetch later
+      res.innerHTML = `
+        <div class="term-line">results for: <strong>${q.replace(/</g,'&lt;')}</strong></div>
+        <div class="term-line">- [mock] Wynik 1 — ${new Date().toISOString().slice(0,10)}</div>
+        <div class="term-line">- [mock] Wynik 2 — ${new Date().toISOString().slice(0,10)}</div>
+      `;
+    });
+
+    // ---- Contact mock ----
+    document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Wiadomość wysłana (mock).');
+    });
+
+    // ---- Footer terminal ----
+    const term = document.getElementById('term');
+    const out = document.getElementById('term-out');
+    const routes = { enter: '#scene', scene: '#scene', archive: '#archive', contact: '#contact', home: '#hero' };
+    function run(cmd) {
+      const c = (cmd || '').toLowerCase().trim();
+      if (!c) return;
+      if (c === 'help') {
+        out.textContent = 'commands: help, enter, scene, archive, contact, home';
+        return;
+      }
+      if (routes[c]) {
+        window.location.hash = routes[c];
+        out.textContent = `navigated to ${c}`;
+      } else {
+        out.textContent = `unknown: ${c}`;
+      }
+    }
+    term?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { run(term.value); term.value = ''; }
+    });
+  </script>
+    <elevenlabs-convai agent-id="agent_2501k7qhxyzgenv8knftxnnc272g"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
 </html>
+
+
