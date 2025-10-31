@@ -502,7 +502,7 @@
   </footer>
 
   <!-- Admin Panel Login -->
-  <div id="admin-login">
+  <div id="admin-login" class="hidden">
     <div class="admin-login-box">
       <h2>Admin Panel</h2>
       <input type="password" id="admin-password" placeholder="Wpisz hasło" />
@@ -673,7 +673,7 @@ term?.addEventListener('keydown', (e) => {
       if (adminLoggedIn) {
         panel.classList.toggle('hidden');
       } else {
-        login.classList.toggle('hidden');
+        login.classList.remove('hidden');
       }
     }
 
@@ -698,7 +698,7 @@ term?.addEventListener('keydown', (e) => {
       adminLoggedIn = false;
       localStorage.removeItem('adminLoggedIn');
       document.getElementById('admin-panel').classList.add('hidden');
-      document.getElementById('admin-login').classList.remove('hidden');
+      document.getElementById('admin-login').classList.add('hidden');
     }
 
     function loadAdminContent() {
