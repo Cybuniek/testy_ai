@@ -117,6 +117,69 @@
     .card h3 { margin: 4px 0 6px; font-size: 1.1rem; }
     .chip { display: inline-block; padding: .25rem .55rem; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); font-size: .78rem; }
 
+    /* ---- Video section ---- */
+    .video-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 14px; }
+    .video-card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .video-card video { width: 100%; height: auto; display: block; background: #000; }
+    .video-info { padding: 16px; }
+    .video-info h3 { margin: 0 0 8px; font-size: 1rem; }
+    .video-info p { margin: 0; font-size: .9rem; color: var(--muted); }
+
+    /* ---- Easter Egg Modal ---- */
+    #easter-egg-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #easter-egg-modal.active {
+      display: flex;
+    }
+    .easter-egg-content {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 32px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .easter-egg-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-size: 24px;
+      cursor: pointer;
+      opacity: .7;
+    }
+    .easter-egg-close:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+    .easter-egg-image {
+      max-width: 100%;
+      max-height: 300px;
+      margin-bottom: 16px;
+    }
+    .easter-egg-content h2 {
+      margin: 0 0 8px;
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(255,46,166,.6);
+    }
+    .easter-egg-content p {
+      color: var(--muted);
+      margin: 8px 0;
+    }
+
     /* ---- Footer + terminal ---- */
     footer { border-top: 1px solid rgba(255,255,255,.06); background: #0a0b10; }
     .terminal { margin-top: 10px; background: #0c0d14; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 12px; }
@@ -142,6 +205,7 @@
           <li><a href="#hero" aria-current="page">Home</a></li>
           <li><a href="#about">O Projekcie</a></li>
           <li><a href="#scene">Scena</a></li>
+          <li><a href="#music">Muzyka</a></li>
           <li><a href="#archive">Archiwum</a></li>
           <li><a href="#contact">Kontakt</a></li>
         </ul>
@@ -204,6 +268,33 @@
       </div>
     </section>
 
+    <section id="music" class="wrap" aria-labelledby="music-title">
+      <h2 id="music-title">Muzyka</h2>
+      <p class="note">Klipy wideo i materiały audio z projektu.</p>
+      <div class="video-grid">
+        <article class="video-card">
+          <video controls>
+            <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663027464606/dLoPlktZecRUhOgx.mp4" type="video/mp4">
+            Twoja przeglądarka nie obsługuje elementu video.
+          </video>
+          <div class="video-info">
+            <h3>Klip Muzyczny #1</h3>
+            <p>Pierwszy materiał z serii USTNIK_2.0</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls>
+            <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663027464606/YyyciOshlUZRboLh.mp4" type="video/mp4">
+            Twoja przeglądarka nie obsługuje elementu video.
+          </video>
+          <div class="video-info">
+            <h3>Klip Muzyczny #2</h3>
+            <p>Drugi materiał z serii USTNIK_2.0</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="archive" class="wrap" aria-labelledby="archive-title">
       <h2 id="archive-title">Archiwum</h2>
       <p class="note">Filtruj po tagach i typach. Prosty layout terminalowy poniżej.</p>
@@ -234,22 +325,66 @@
       <div class="term-line">© 2025 USTNIK_2.0 / ANH-RAVE Collective · <a href="#" aria-label="Licencja">Licencja</a></div>
       <div class="terminal" aria-label="Mini-terminal">
         <div class="term-line">&gt; Wpisz: <strong>help</strong><span class="caret" aria-hidden="true"></span></div>
-        <input id="term" class="term-input" placeholder="help | enter | scene | archive | contact" />
+        <input id="term" class="term-input" placeholder="help | enter | scene | archive | contact | music | illegal" />
         <div id="term-out" class="term-line" style="margin-top:8px; opacity:.9;">ready.</div>
       </div>
     </div>
   </footer>
 
+  <!-- Easter Egg Modal -->
+  <div id="easter-egg-modal">
+    <div class="easter-egg-content">
+      <button class="easter-egg-close" onclick="closeEasterEgg()">&times;</button>
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310419663027464606/AKCEAfMSzjvJadIh.png" alt="Easter Egg" class="easter-egg-image" />
+      <h2>🎵 ILLEGAL MUSIC 🎵</h2>
+      <p>Znalazłeś sekret! Gratuluję!</p>
+    </div>
+  </div>
+
   <script>
     // ---- Quotes rotator ----
     const quotes = [
-      '„Prawda jest jak mikrofon — kto pierwszy chwyci, ten nadaje ton.”',
-      '„Scena to laboratorium. Błędy są danymi.”',
-      '„AI to medium, nie fetysz.”',
-      '„Nie ma publiczności biernej, są tylko niezaadresowane role.”'
+      '„Prawda jest jak mikrofon — kto pierwszy chwyci, ten nadaje ton."',
+      '„Scena to laboratorium. Błędy są danymi."',
+      '„AI to medium, nie fetysz."',
+      '„Nie ma publiczności biernej, są tylko niezaadresowane role."'
     ];
     const qEl = document.getElementById('quote');
     if (qEl) { qEl.textContent = quotes[Math.floor(Math.random()*quotes.length)]; }
+
+    // ---- Easter Egg Trigger ----
+    let keySequence = [];
+    const triggerSequence = ['i', 'l', 'l', 'e', 'g', 'a', 'l'];
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      keySequence.push(key);
+      keySequence = keySequence.slice(-triggerSequence.length);
+      if (keySequence.join('') === triggerSequence.join('')) {
+        showEasterEgg();
+        keySequence = [];
+      }
+    });
+
+    function showEasterEgg() {
+      const modal = document.getElementById('easter-egg-modal');
+      if (modal) {
+        modal.classList.add('active');
+      }
+    }
+
+    function closeEasterEgg() {
+      const modal = document.getElementById('easter-egg-modal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('easter-egg-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'easter-egg-modal') {
+        closeEasterEgg();
+      }
+    });
 
     // ---- Archive mock search ----
     const form = document.getElementById('archive-form');
@@ -276,12 +411,17 @@
     // ---- Footer terminal ----
     const term = document.getElementById('term');
     const out = document.getElementById('term-out');
-    const routes = { enter: '#scene', scene: '#scene', archive: '#archive', contact: '#contact', home: '#hero' };
+    const routes = { enter: '#scene', scene: '#scene', archive: '#archive', contact: '#contact', home: '#hero', music: '#music', illegal: 'easter' };
     function run(cmd) {
       const c = (cmd || '').toLowerCase().trim();
       if (!c) return;
       if (c === 'help') {
-        out.textContent = 'commands: help, enter, scene, archive, contact, home';
+        out.textContent = 'commands: help, enter, scene, archive, contact, home, music, illegal';
+        return;
+      }
+      if (c === 'illegal') {
+        showEasterEgg();
+        out.textContent = 'easter egg activated!';
         return;
       }
       if (routes[c]) {
