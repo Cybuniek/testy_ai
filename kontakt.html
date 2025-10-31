@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>USTNIK_2.0 — Home</title>
+  <title>USTNIK_2.0 — Kontakt</title>
   <meta name="description" content="USTNIK_2.0: hybryda performance'u, AI i kultury alternatywnej." />
   <meta name="theme-color" content="#0b0b0f" />
   <style>
@@ -380,15 +380,16 @@
 </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <h1 id="title">USTNIK_2.0</h1>
-        <p id="quote" class="quote">„AI to medium, nie fetysz."</p>
-        <div class="cta-group">
-          <a href="o-projekcie.html" class="cta">O Projekcie</a>
-          <a href="scena.html" class="cta outline">Wejdź do studia 🎙️</a>
-        </div>
-      </div>
+    <section id="contact" class="wrap" aria-labelledby="contact-title">
+      <h2 id="contact-title">Kontakt</h2>
+      <p class="note" id="contact-content">Wyślij wiadomość do zespołu lub AI-postaci.</p>
+      
+      <form id="contact-form">
+        <input type="text" placeholder="Imię" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Wiadomość" required></textarea>
+        <button type="submit" class="cta">Wyślij</button>
+      </form>
     </section>
 
   </main>
