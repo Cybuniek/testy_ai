@@ -189,6 +189,176 @@
     .term-input { width: 100%; margin-top: 8px; padding: .6rem .7rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); background: #0f1018; color: var(--fg); }
 
     /* ---- Accessibility ---- */
+
+    /* ---- Admin Panel ---- */
+    #admin-login {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    #admin-login.hidden {
+      display: none;
+    }
+    .admin-login-box {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 400px;
+      width: 100%;
+    }
+    .admin-login-box h2 {
+      margin: 0 0 24px;
+      text-align: center;
+      color: var(--accent);
+    }
+    .admin-login-box input {
+      width: 100%;
+      padding: .8rem;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0f1018;
+      color: var(--fg);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .admin-login-box button {
+      width: 100%;
+      padding: .8rem;
+      background: var(--accent);
+      color: #0b0b0f;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .admin-login-box button:hover {
+      opacity: .9;
+    }
+
+    #admin-panel {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    #admin-panel.hidden {
+      display: none;
+    }
+    .admin-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .admin-header h1 {
+      margin: 0;
+      color: var(--accent);
+    }
+    .admin-logout {
+      padding: .6rem 1rem;
+      background: #191a25;
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--fg);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .admin-logout:hover {
+      border-color: rgba(255,255,255,.25);
+    }
+    .admin-section {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .admin-section h3 {
+      margin: 0 0 16px;
+      color: var(--accent-2);
+    }
+    .admin-section label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+    .admin-section textarea,
+    .admin-section input {
+      width: 100%;
+      padding: .8rem;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0f1018;
+      color: var(--fg);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .95rem;
+      resize: vertical;
+    }
+    .admin-section textarea {
+      min-height: 100px;
+    }
+    .admin-save {
+      padding: .8rem 1.2rem;
+      background: var(--accent);
+      color: #0b0b0f;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: .95rem;
+    }
+    .admin-save:hover {
+      opacity: .9;
+    }
+    .admin-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      color: #0b0b0f;
+      font-weight: 800;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 8px 22px rgba(255,46,166,.35);
+    }
+    .admin-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      nav ul { gap: .6rem; font-size: .9rem; }
+      .cta { padding: .6rem .9rem; font-size: .9rem; }
+      .admin-login-box {
+        padding: 24px;
+      }
+      .admin-section {
+        padding: 16px;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .glitch-bg, .title .glitch::before, .title .glitch::after, .caret { animation: none; }
     }
@@ -251,7 +421,7 @@
 
     <section id="scene" class="wrap" aria-labelledby="scene-title">
       <h2 id="scene-title">Scena</h2>
-      <p class="note">Kafle live: występy, dialogi AI, transkrypty/logi show.</p>
+      <p class="note" id="scene-content">Kafle live: występy, dialogi AI, transkrypty/logi show.</p>
       <div class="grid" style="margin-top:14px;">
         <article class="card">
           <h3>Występy</h3>
@@ -270,7 +440,7 @@
 
     <section id="music" class="wrap" aria-labelledby="music-title">
       <h2 id="music-title">Muzyka</h2>
-      <p class="note">Klipy wideo i materiały audio z projektu.</p>
+      <p class="note" id="music-content">Klipy wideo i materiały audio z projektu.</p>
       <div class="video-grid">
         <article class="video-card">
           <video controls>
@@ -310,7 +480,7 @@
 
     <section id="contact" class="wrap" aria-labelledby="contact-title">
       <h2 id="contact-title">Kontakt</h2>
-      <p class="note">Wyślij wiadomość do zespołu lub AI-postaci.</p>
+      <p class="note" id="contact-content">Wyślij wiadomość do zespołu lub AI-postaci.</p>
       <form id="contact-form" class="grid" style="margin-top:14px;">
         <input class="term-input" name="name" placeholder="Imię / alias" required />
         <input class="term-input" name="email" placeholder="Email" type="email" required />
@@ -330,6 +500,63 @@
       </div>
     </div>
   </footer>
+
+  <!-- Admin Panel Login -->
+  <div id="admin-login">
+    <div class="admin-login-box">
+      <h2>Admin Panel</h2>
+      <input type="password" id="admin-password" placeholder="Wpisz hasło" />
+      <button onclick="adminLogin()">Zaloguj się</button>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="hidden">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1>⚙️ Panel Admina</h1>
+        <button class="admin-logout" onclick="adminLogout()">Wyloguj się</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>Cytat na stronie głównej</h3>
+        <label>Cytat:</label>
+        <textarea id="admin-quote" placeholder="Wpisz cytat..."></textarea>
+        <button class="admin-save" onclick="saveQuote()">Zapisz cytat</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>O Projekcie</h3>
+        <label>Opis:</label>
+        <textarea id="admin-about" placeholder="Opis projektu..."></textarea>
+        <button class="admin-save" onclick="saveAbout()">Zapisz opis</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>Scena - Opis</h3>
+        <label>Opis sekcji Scena:</label>
+        <textarea id="admin-scene" placeholder="Opis sceny..."></textarea>
+        <button class="admin-save" onclick="saveScene()">Zapisz opis</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>Muzyka - Opis</h3>
+        <label>Opis sekcji Muzyka:</label>
+        <textarea id="admin-music" placeholder="Opis muzyki..."></textarea>
+        <button class="admin-save" onclick="saveMusic()">Zapisz opis</button>
+      </div>
+
+      <div class="admin-section">
+        <h3>Kontakt - Opis</h3>
+        <label>Opis sekcji Kontakt:</label>
+        <textarea id="admin-contact" placeholder="Opis kontaktu..."></textarea>
+        <button class="admin-save" onclick="saveContact()">Zapisz opis</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Toggle Button -->
+  <button class="admin-toggle" onclick="toggleAdminPanel()" title="Panel Admina">⚙️</button>
 
   <!-- Easter Egg Modal -->
   <div id="easter-egg-modal">
@@ -431,9 +658,132 @@
         out.textContent = `unknown: ${c}`;
       }
     }
-    term?.addEventListener('keydown', (e) => {
+term?.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') { run(term.value); term.value = ''; }
     });
+
+    // ---- Admin Panel ----
+    const ADMIN_PASSWORD = 'illegal'; // Hasło admina
+    let adminLoggedIn = false;
+
+    function toggleAdminPanel() {
+      const login = document.getElementById('admin-login');
+      const panel = document.getElementById('admin-panel');
+      
+      if (adminLoggedIn) {
+        panel.classList.toggle('hidden');
+      } else {
+        login.classList.toggle('hidden');
+      }
+    }
+
+    function adminLogin() {
+      const passwordInput = document.getElementById('admin-password');
+      const password = passwordInput.value;
+      
+      if (password === ADMIN_PASSWORD) {
+        adminLoggedIn = true;
+        localStorage.setItem('adminLoggedIn', 'true');
+        document.getElementById('admin-login').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+        loadAdminContent();
+        passwordInput.value = '';
+      } else {
+        alert('Błędne hasło!');
+        passwordInput.value = '';
+      }
+    }
+
+    function adminLogout() {
+      adminLoggedIn = false;
+      localStorage.removeItem('adminLoggedIn');
+      document.getElementById('admin-panel').classList.add('hidden');
+      document.getElementById('admin-login').classList.remove('hidden');
+    }
+
+    function loadAdminContent() {
+      document.getElementById('admin-quote').value = localStorage.getItem('customQuote') || '';
+      document.getElementById('admin-about').value = localStorage.getItem('customAbout') || '';
+      document.getElementById('admin-scene').value = localStorage.getItem('customScene') || '';
+      document.getElementById('admin-music').value = localStorage.getItem('customMusic') || '';
+      document.getElementById('admin-contact').value = localStorage.getItem('customContact') || '';
+    }
+
+    function saveQuote() {
+      const quote = document.getElementById('admin-quote').value;
+      localStorage.setItem('customQuote', quote);
+      const qEl = document.getElementById('quote');
+      if (qEl) { qEl.textContent = quote || quotes[Math.floor(Math.random()*quotes.length)]; }
+      alert('Cytat zapisany!');
+    }
+
+    function saveAbout() {
+      const about = document.getElementById('admin-about').value;
+      localStorage.setItem('customAbout', about);
+      const aboutEl = document.getElementById('about-content');
+      if (aboutEl && about) { aboutEl.textContent = about; }
+      alert('Opis zapisany!');
+    }
+
+    function saveScene() {
+      const scene = document.getElementById('admin-scene').value;
+      localStorage.setItem('customScene', scene);
+      const sceneEl = document.getElementById('scene-content');
+      if (sceneEl && scene) { sceneEl.textContent = scene; }
+      alert('Opis sceny zapisany!');
+    }
+
+    function saveMusic() {
+      const music = document.getElementById('admin-music').value;
+      localStorage.setItem('customMusic', music);
+      const musicEl = document.getElementById('music-content');
+      if (musicEl && music) { musicEl.textContent = music; }
+      alert('Opis muzyki zapisany!');
+    }
+
+    function saveContact() {
+      const contact = document.getElementById('admin-contact').value;
+      localStorage.setItem('customContact', contact);
+      const contactEl = document.getElementById('contact-content');
+      if (contactEl && contact) { contactEl.textContent = contact; }
+      alert('Opis kontaktu zapisany!');
+    }
+
+    // Sprawdzenie czy admin jest zalogowany
+    window.addEventListener('load', () => {
+      if (localStorage.getItem('adminLoggedIn') === 'true') {
+        adminLoggedIn = true;
+        document.getElementById('admin-login').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+        loadAdminContent();
+      }
+      
+      // Załaduj zapisane treści
+      const customAbout = localStorage.getItem('customAbout');
+      if (customAbout) {
+        const aboutEl = document.getElementById('about-content');
+        if (aboutEl) aboutEl.textContent = customAbout;
+      }
+      
+      const customScene = localStorage.getItem('customScene');
+      if (customScene) {
+        const sceneEl = document.getElementById('scene-content');
+        if (sceneEl) sceneEl.textContent = customScene;
+      }
+      
+      const customMusic = localStorage.getItem('customMusic');
+      if (customMusic) {
+        const musicEl = document.getElementById('music-content');
+        if (musicEl) musicEl.textContent = customMusic;
+      }
+      
+      const customContact = localStorage.getItem('customContact');
+      if (customContact) {
+        const contactEl = document.getElementById('contact-content');
+        if (contactEl) contactEl.textContent = customContact;
+      }
+    });
+
   </script>
 </body>
 </html>
