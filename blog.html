@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>USTNIK_2.0 — Scena</title>
+  <title>USTNIK_2.0 — Show</title>
   <meta name="theme-color" content="#0b0b0f" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/creative.css">
@@ -15,8 +15,8 @@
     <a href="index.html" class="logo"><span class="mark">///</span> USTNIK_2.0</a>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="blog.html">Show</a></li>
-      <li><a href="scena.html" aria-current="page">Scena</a></li>
+      <li><a href="blog.html" aria-current="page">Show</a></li>
+      <li><a href="scena.html">Scena</a></li>
       <li><a href="muzyka.html">Muzyka</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
@@ -25,13 +25,18 @@
 </header>
 
   <main>
-    <section class="wrap">
-      <h1 class="title">VISUAL FEEDS</h1>
-      <p class="lead">Archiwum wizualne. Performance i eksperymenty wideo.</p>
-      
-      <div id="video-gallery">
-        <!-- Content injected via JS -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="glitch-bg"></div>
+      <div class="wrap hero-inner">
+        <h1 class="title"><span class="glitch" data-text="TRANSMISSIONS">TRANSMISSIONS</span></h1>
+        <p class="lead">Logi systemowe, eksperymenty i zrzuty pamięci @admin/ustnik.</p>
       </div>
+    </section>
+
+    <section>
+        <div class="wrap" id="blog-posts">
+            <!-- Blog posts injected here -->
+        </div>
     </section>
 
   </main>

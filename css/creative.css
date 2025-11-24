@@ -1,0 +1,121 @@
+/* ---- Creative Extras Styles ---- */
+
+/* Step 4: Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-2);
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--accent);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+body.hovering .cursor-outline {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 0, 255, 0.1);
+    border-color: var(--accent-2);
+}
+
+/* Step 5: Matrix Rain Canvas */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+body.matrix-mode #matrix-canvas {
+    opacity: 0.3;
+}
+
+/* Step 8: Theme Switcher */
+#theme-switcher {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+.theme-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    background: #222;
+    color: #fff;
+}
+.theme-btn:hover { transform: scale(1.1); }
+
+/* Step 9: Synth Pad */
+#synth-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid var(--accent);
+    background: #000;
+}
+.synth-key {
+    height: 60px;
+    background: #111;
+    border: 1px solid var(--muted);
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.synth-key:active, .synth-key.active {
+    background: var(--accent-2);
+    box-shadow: 0 0 15px var(--accent-2);
+}
+
+/* Step 2: 3D Tilt Effect */
+.tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+.tilt-content {
+    transform: translateZ(20px);
+}
+
+/* Step 6: AI Slop Generator */
+#ai-slop-output {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--accent-2);
+    min-height: 100px;
+    padding: 10px;
+    border: 1px dashed var(--muted);
+    margin-top: 10px;
+    white-space: pre-wrap;
+}
+
+/* Dev Mode Styles */
+body.dev-mode {
+    filter: invert(1) hue-rotate(180deg);
+}
+body.dev-mode img, body.dev-mode video {
+    filter: invert(1) hue-rotate(-180deg);
+}

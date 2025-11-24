@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USTNIK_2.0 — Admin Panel</title>
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/creative.css">
+</head>
+<body>
+
+  <!-- Admin Panel Login -->
+  <div id="admin-login" class="hidden">
+    <div class="admin-login-box">
+      <h2>Admin Panel</h2>
+      <input type="password" id="admin-password" placeholder="Wpisz hasło" />
+      <button onclick="adminLogin()">Zaloguj się</button>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="hidden">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h1>⚙️ Panel Admina</h1>
+        <button class="admin-logout" onclick="adminLogout()">Wyloguj się</button>
+        <a href="index.html" class="cta outline">Powrót do strony</a>
+      </div>
+
+      <div class="admin-section">
+        <h3>Zarządzanie Muzyką</h3>
+        <label>Dodaj utwór muzyczny:</label>
+        <input type="text" id="music-title" placeholder="Nazwa utworu" />
+        <input type="text" id="music-url" placeholder="URL do pliku (mp3, youtube, itp.)" />
+        <button class="admin-save" onclick="addMusic()">Dodaj muzykę</button>
+        <div id="music-list" style="margin-top: 16px;"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>Zarządzanie Filmami</h3>
+        <label>Dodaj film/klip:</label>
+        <input type="text" id="video-title" placeholder="Nazwa filmu" />
+        <input type="text" id="video-url" placeholder="URL do wideo (youtube, mp4, itp.)" />
+        <button class="admin-save" onclick="addVideo()">Dodaj film</button>
+        <div id="video-list" style="margin-top: 16px;"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>Zarządzanie Galerią</h3>
+        <label>Dodaj obraz:</label>
+        <input type="text" id="image-title" placeholder="Nazwa obrazu" />
+        <input type="text" id="image-url" placeholder="URL do obrazu" />
+        <button class="admin-save" onclick="addImage()">Dodaj obraz</button>
+        <div id="image-list" style="margin-top: 16px;"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>Edycja Treści</h3>
+        <label>Cytat na stronie głównej:</label>
+        <textarea id="admin-quote" placeholder="Wpisz cytat..."></textarea>
+        <button class="admin-save" onclick="saveQuote()">Zapisz cytat</button>
+      </div>
+
+      <!-- New: Blog Management -->
+      <div class="admin-section">
+        <h3>Zarządzanie Blogiem (Ustnik Show)</h3>
+        <label>Tytuł wpisu:</label>
+        <input type="text" id="post-title" placeholder="Tytuł..." />
+        <label>Treść wpisu:</label>
+        <textarea id="post-content" placeholder="Treść..." style="min-height: 200px;"></textarea>
+        <button class="admin-save" onclick="addPost()">Dodaj wpis</button>
+        <div id="post-list" style="margin-top: 16px;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+  <script>
+    // Force admin login prompt on load if not logged in
+    window.addEventListener('load', () => {
+        if (!localStorage.getItem('adminLoggedIn')) {
+            document.getElementById('admin-login').classList.remove('hidden');
+            document.getElementById('admin-panel').classList.add('hidden');
+        } else {
+            initAdmin();
+        }
+    });
+  </script>
+  <script src="js/creative.js"></script>
+</body>
+</html>

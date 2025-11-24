@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USTNIK_2.0 — Glitch Dodge</title>
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+      #game-canvas {
+          background: #000;
+          border: 2px solid var(--accent);
+          display: block;
+          margin: 0 auto;
+          box-shadow: 0 0 20px var(--accent);
+          max-width: 100%;
+      }
+      .game-ui {
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      .score-board {
+          font-size: 2rem;
+          color: var(--accent-2);
+          font-weight: 900;
+          margin-bottom: 10px;
+      }
+  </style>
+  <link rel="stylesheet" href="css/creative.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav wrap">
+    <a href="index.html" class="logo"><span class="mark">///</span> USTNIK_2.0</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Show</a></li>
+      <li><a href="scena.html">Scena</a></li>
+      <li><a href="game.html" aria-current="page">Game</a></li>
+      <li><a href="voice-agent.html">AI Agent</a></li>
+    </ul>
+    <a href="blog.html" class="cta">Enter Show</a>
+  </nav>
+</header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h1 class="title" style="text-align: center; font-size: 3rem;">GLITCH DODGE</h1>
+        <div class="game-ui">
+            <div class="score-board">SCORE: <span id="score">0</span></div>
+            <button id="start-btn" class="cta" onclick="startGame()">START SYSTEM</button>
+            <p class="note">Kliknij lub użyj spacji, aby unikać błędów (czerwone bloki).</p>
+        </div>
+        <canvas id="game-canvas" width="800" height="400"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2025 USTNIK_2.0</p>
+    </div>
+  </footer>
+
+  <script>
+      const canvas = document.getElementById('game-canvas');
+      const ctx = canvas.getContext('2d');
+      let score = 0;
+      let gameLoop;
+      let isPlaying = false;
+      let player = { x: 50, y: 200, width: 30, height: 30, dy: 0 };
+      let obstacles = [];
+      let frame = 0;
+
+      function startGame() {
+          if (isPlaying) return;
+          isPlaying = true;
+          score = 0;
+          obstacles = [];
+          player.y = 200;
+          player.dy = 0;
+          document.getElementById('start-btn').textContent = 'SYSTEM RUNNING...';
+          document.getElementById('start-btn').disabled = true;
+          gameLoop = requestAnimationFrame(update);
+      }
+
+      function gameOver() {
+          isPlaying = false;
+          cancelAnimationFrame(gameLoop);
+          alert('SYSTEM CRASHED. SCORE: ' + score);
+          document.getElementById('start-btn').textContent = 'REBOOT SYSTEM';
+          document.getElementById('start-btn').disabled = false;
+      }
+
+      function update() {
+          if (!isPlaying) return;
+
+          ctx.fillStyle = '#000';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // Player logic (Gravity flip or Jump)
+          // Simple jump mechanics
+          player.dy += 0.5; // gravity
+          player.y += player.dy;
+
+          if (player.y + player.height > canvas.height) {
+              player.y = canvas.height - player.height;
+              player.dy = 0;
+          }
+          if (player.y < 0) {
+              player.y = 0;
+              player.dy = 0;
+          }
+
+          // Draw Player
+          ctx.fillStyle = '#00ff9d';
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = '#00ff9d';
+          ctx.fillRect(player.x, player.y, player.width, player.height);
+          ctx.shadowBlur = 0;
+
+          // Obstacles
+          if (frame % 100 === 0) {
+              let height = Math.random() * 100 + 50;
+              obstacles.push({ x: canvas.width, y: canvas.height - height, width: 30, height: height });
+          }
+
+          // Random flying glitch obstacles
+          if (frame % 150 === 0) {
+              let y = Math.random() * (canvas.height - 100);
+              obstacles.push({ x: canvas.width, y: y, width: 40, height: 40, type: 'flying' });
+          }
+
+          for (let i = 0; i < obstacles.length; i++) {
+              let obs = obstacles[i];
+              obs.x -= 5; // speed
+
+              // Draw Obstacle
+              ctx.fillStyle = '#ff00ff';
+              ctx.shadowBlur = 10;
+              ctx.shadowColor = '#ff00ff';
+              ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+              ctx.shadowBlur = 0;
+
+              // Collision
+              if (
+                  player.x < obs.x + obs.width &&
+                  player.x + player.width > obs.x &&
+                  player.y < obs.y + obs.height &&
+                  player.y + player.height > obs.y
+              ) {
+                  gameOver();
+              }
+
+              // Remove off-screen
+              if (obs.x + obs.width < 0) {
+                  obstacles.splice(i, 1);
+                  i--;
+                  score++;
+                  document.getElementById('score').textContent = score;
+              }
+          }
+
+          frame++;
+          gameLoop = requestAnimationFrame(update);
+      }
+
+      // Input
+      window.addEventListener('keydown', (e) => {
+          if (e.code === 'Space' && isPlaying) {
+              player.dy = -10; // Jump force
+          }
+      });
+      canvas.addEventListener('mousedown', () => {
+          if (isPlaying) player.dy = -10;
+      });
+
+  </script>
+  <script src="js/creative.js"></script>
+</body>
+</html>
