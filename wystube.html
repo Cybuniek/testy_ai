@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>USTNIK_2.0 — Home</title>
+  <title>USTNIK_2.0 — WysTube</title>
   <meta name="description" content="USTNIK_2.0: hybryda performance'u, AI i kultury alternatywnej." />
   <meta name="theme-color" content="#0b0b0f" />
   <style>
@@ -61,58 +61,10 @@
     }
     .cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(255,46,166,.45); }
 
-    /* ---- Hero ---- */
-    #hero {
-      position: relative; min-height: 72vh; display: grid; place-items: center; text-align: center;
-      overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .glitch-bg {
-      position: absolute; inset: -10%;
-      background:
-        radial-gradient(1200px 400px at 10% 10%, rgba(255,46,166,.14), transparent 60%),
-        radial-gradient(800px 500px at 90% 20%, rgba(0,240,255,.12), transparent 60%),
-        repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 2px, transparent 2px 6px);
-      filter: hue-rotate(0deg);
-      animation: scan 8s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes scan { to { transform: translateY(-2%) skewY(-1deg); filter: hue-rotate(15deg);} }
-
-    .hero-inner { position: relative; z-index: 2; }
-    .tag { display: inline-block; padding: .25rem .6rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: .8rem; opacity: .9; }
-
-    .title {
-      margin: 14px 0 6px; font-size: clamp(2.1rem, 4.6vw, 4rem); font-weight: 900; letter-spacing: .02em;
-      text-shadow: 0 0 18px rgba(255,46,166,.25);
-    }
-    .title .glitch {
-      position: relative; display: inline-block;
-    }
-    .title .glitch::before, .title .glitch::after {
-      content: attr(data-text);
-      position: absolute; inset: 0; mix-blend-mode: screen; opacity: .75; pointer-events: none;
-    }
-    .title .glitch::before { transform: translate(2px, 0); color: var(--accent-2); clip-path: inset(0 0 0 0); animation: g1 2.5s infinite alternate ease-in-out; }
-    .title .glitch::after  { transform: translate(-2px, 0); color: var(--accent);   clip-path: inset(0 0 0 0); animation: g2 2.3s infinite alternate ease-in-out; }
-    @keyframes g1 { 20%{clip-path: inset(10% 0 60% 0)} 40%{clip-path: inset(80% 0 5% 0)} 60%{clip-path: inset(30% 0 40% 0)} 80%{clip-path: inset(0 0 0 0)} }
-    @keyframes g2 { 15%{clip-path: inset(70% 0 10% 0)} 35%{clip-path: inset(15% 0 45% 0)} 65%{clip-path: inset(0 0 0 0)} 85%{clip-path: inset(45% 0 25% 0)} }
-
-    .lead { max-width: 65ch; margin: 10px auto 20px; color: var(--muted); }
-    .hero-actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      padding: .8rem 1.1rem; border-radius: 12px; background: #191a25; border: 1px solid rgba(255,255,255,.08);
-      font-weight: 700; display: inline-flex; gap: .6rem; align-items: center;
-    }
-    .btn:hover { border-color: rgba(255,255,255,.25); }
-
     /* ---- Sections ---- */
     section { padding: 64px 0; }
     h2 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin: 0 0 12px; }
     p.note { color: var(--muted); margin-top: 6px; }
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
-    .card h3 { margin: 4px 0 6px; font-size: 1.1rem; }
-    .chip { display: inline-block; padding: .25rem .55rem; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); font-size: .78rem; }
 
     /* ---- Video section ---- */
     .video-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 14px; }
@@ -122,61 +74,6 @@
     .video-info h3 { margin: 0 0 8px; font-size: 1rem; }
     .video-info p { margin: 0; font-size: .9rem; color: var(--muted); }
 
-    /* ---- Easter Egg Modal ---- */
-    #easter-egg-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.9);
-      backdrop-filter: blur(4px);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    #easter-egg-modal.active {
-      display: flex;
-    }
-    .easter-egg-content {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: 32px;
-      max-width: 500px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
-    .easter-egg-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      color: var(--fg);
-      font-size: 24px;
-      cursor: pointer;
-      opacity: .7;
-    }
-    .easter-egg-close:hover {
-      opacity: 1;
-      color: var(--accent);
-    }
-    .easter-egg-image {
-      max-width: 100%;
-      max-height: 300px;
-      margin-bottom: 16px;
-    }
-    .easter-egg-content h2 {
-      margin: 0 0 8px;
-      color: var(--accent);
-      text-shadow: 0 0 12px rgba(255,46,166,.6);
-    }
-    .easter-egg-content p {
-      color: var(--muted);
-      margin: 8px 0;
-    }
-
     /* ---- Footer + terminal ---- */
     footer { border-top: 1px solid rgba(255,255,255,.06); background: #0a0b10; }
     .terminal { margin-top: 10px; background: #0c0d14; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 12px; }
@@ -184,8 +81,6 @@
     .caret { display: inline-block; width: .6ch; background: var(--fg); margin-left: 1px; animation: blink 1.05s step-end infinite; }
     @keyframes blink { 50% { opacity: 0; } }
     .term-input { width: 100%; margin-top: 8px; padding: .6rem .7rem; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); background: #0f1018; color: var(--fg); }
-
-    /* ---- Accessibility ---- */
 
     /* ---- Admin Panel ---- */
     #admin-login {
@@ -348,16 +243,6 @@
     @media (max-width: 768px) {
       nav ul { gap: .6rem; font-size: .9rem; }
       .cta { padding: .6rem .9rem; font-size: .9rem; }
-      .admin-login-box {
-        padding: 24px;
-      }
-      .admin-section {
-        padding: 16px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .glitch-bg, .title .glitch::before, .title .glitch::after, .caret { animation: none; }
     }
   
   </style>
@@ -370,25 +255,22 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="show.html">Show</a></li>
-      <li><a href="wystube.html">WysTube</a></li>
+      <li><a href="wystube.html" aria-current="page">WysTube</a></li>
       <li><a href="o-projekcie.html">O Projekcie</a></li>
       <li><a href="muzyka.html">Muzyka</a></li>
       <li><a href="archiwum.html">Archiwum</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
-    <a href="index.html" class="cta">Enter Show</a>
+    <a href="show.html" class="cta">Enter Show</a>
   </nav>
 </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap">
-        <h1 id="title">USTNIK_2.0</h1>
-        <p id="quote" class="quote">„AI to medium, nie fetysz."</p>
-        <div class="cta-group">
-          <a href="o-projekcie.html" class="cta">O Projekcie</a>
-          <a href="wystube.html" class="cta outline">Wejdź do studia 🎙️</a>
-        </div>
+    <section id="wystube" class="wrap" aria-labelledby="wystube-title">
+      <h2 id="wystube-title">WysTube</h2>
+      <p class="note">Zbiór wideo: live sety, klipy, eksperymenty. Dodaj materiały w panelu admina.</p>
+      <div id="wystube-grid">
+        <p>Brak materiałów. Dodaj je w panelu admina.</p>
       </div>
     </section>
 

@@ -369,8 +369,9 @@
     <a href="index.html" class="logo">USTNIK_2.0</a>
     <ul>
       <li><a href="index.html">Home</a></li>
+      <li><a href="show.html">Show</a></li>
+      <li><a href="wystube.html">WysTube</a></li>
       <li><a href="o-projekcie.html">O Projekcie</a></li>
-      <li><a href="scena.html">Scena</a></li>
       <li><a href="muzyka.html">Muzyka</a></li>
       <li><a href="archiwum.html">Archiwum</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
@@ -430,6 +431,20 @@
         <input type="text" id="video-url" placeholder="URL do wideo (youtube, mp4, itp.)" />
         <button class="admin-save" onclick="addVideo()">Dodaj film</button>
         <div id="video-list" style="margin-top: 16px;"></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>Terminarz Show (live)</h3>
+        <label>Tytuł występu:</label>
+        <input type="text" id="show-title" placeholder="Nazwa show / setu" />
+        <label>Data i godzina:</label>
+        <input type="datetime-local" id="show-date" />
+        <label>Miejsce / scena (opcjonalnie):</label>
+        <input type="text" id="show-place" placeholder="np. Klub XYZ / Stream" />
+        <label>Link do streamu / biletu (opcjonalnie):</label>
+        <input type="url" id="show-link" placeholder="https://..." />
+        <button class="admin-save" onclick="addShowEvent()">Dodaj termin</button>
+        <div id="show-schedule-list" style="margin-top: 16px;"></div>
       </div>
 
       <div class="admin-section">
